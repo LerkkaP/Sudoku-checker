@@ -1,118 +1,118 @@
-def sudoku_oikein(sudoku: list):
+def sudoku_check(sudoku: list):
 
-    def nelio_oikein(sudoku):
-        lista = []
-        sarake = 0
-        rivi = 0
-        raja = sarake + 3
+    def square_correct(sudoku):
+        list = []
+        column = 0
+        row = 0
+        border = column + 3
         while True:
             for i in range(0, 9):
-                lahto = sudoku[rivi][sarake]
-                if lahto > 0 and lahto in lista:
+                start = sudoku[row][column]
+                if start > 0 and start in list:
                     return False
-                lista.append(lahto)
-                sarake += 1
-                if sarake == raja:
-                    sarake = raja - 3
-                    rivi += 1
-                if sarake == 2 and rivi == 2:
-                    if sudoku[2][2] in lista and sudoku[2][2] > 0:
+                list.append(start)
+                column += 1
+                if column == border:
+                    column = border - 3
+                    row += 1
+                if column == 2 and row == 2:
+                    if sudoku[2][2] in list and sudoku[2][2] > 0:
                         return False
-                    lista = []
-                    sarake += 1
-                    rivi = 0
-                    raja = sarake + 3
+                    list = []
+                    column += 1
+                    row = 0
+                    border = column + 3
                     continue
-                if sarake == 5 and rivi == 2:
-                    if sudoku[2][5] in lista and sudoku[2][5] > 0:
+                if column == 5 and row == 2:
+                    if sudoku[2][5] in list and sudoku[2][5] > 0:
                         return False
-                    lista = []
-                    sarake += 1
-                    rivi = 0
-                    raja = sarake + 3
+                    list = []
+                    column += 1
+                    row = 0
+                    border = column + 3
                     continue
-                if sarake == 2 and rivi == 5:
-                    if sudoku[5][2] in lista and sudoku[5][2] > 0:
+                if column == 2 and row == 5:
+                    if sudoku[5][2] in list and sudoku[5][2] > 0:
                         return False
-                    lista = []
-                    sarake += 1
-                    rivi -= 2
-                    raja = sarake + 3
+                    list = []
+                    column += 1
+                    row -= 2
+                    border = column + 3
                     continue
-                if sarake == 5 and rivi == 5:
-                    if sudoku[5][5] in lista and sudoku[5][5] > 0:
+                if column == 5 and row == 5:
+                    if sudoku[5][5] in list and sudoku[5][5] > 0:
                         return False
-                    lista = []
-                    sarake += 1
-                    rivi -= 2
-                    raja = sarake + 3
+                    list = []
+                    column += 1
+                    row -= 2
+                    border = column + 3
                     continue
-                if sarake == 8 and rivi == 5:
-                    if sudoku[5][8] in lista and sudoku[5][8] > 0:
+                if column == 8 and row == 5:
+                    if sudoku[5][8] in list and sudoku[5][8] > 0:
                         return False
-                    lista = []
-                    rivi += 1
-                    sarake = 0
-                    raja = sarake + 3
+                    list = []
+                    row += 1
+                    column = 0
+                    border = column + 3
                     continue
-                if sarake == 2 and rivi == 8:
-                    if sudoku[8][2] in lista and sudoku[8][2] > 0:
+                if column == 2 and row == 8:
+                    if sudoku[8][2] in list and sudoku[8][2] > 0:
                         return False
-                    lista = []
-                    sarake += 1
-                    rivi -= 2
-                    raja = sarake + 3
+                    list = []
+                    column += 1
+                    row -= 2
+                    border = column + 3
                     continue
-                if sarake == 5 and rivi == 8:
-                    if sudoku[8][5] in lista and sudoku[8][5] > 0:
+                if column == 5 and row == 8:
+                    if sudoku[8][5] in list and sudoku[8][5] > 0:
                         return False
-                    lista = []
-                    sarake += 1
-                    rivi -= 2
-                    raja = sarake + 3
+                    list = []
+                    column += 1
+                    row -= 2
+                    border = column + 3
                     continue
-                if sarake == 8 and rivi == 2:
-                    if sudoku[2][8] in lista and sudoku[2][8] > 0:
+                if column == 8 and row == 2:
+                    if sudoku[2][8] in list and sudoku[2][8] > 0:
                         return False
-                    lista = []
-                    rivi += 1
-                    sarake = 0
-                    raja = sarake + 3
+                    list = []
+                    row += 1
+                    column = 0
+                    border = column + 3
                     continue
-                if sarake == 8 and rivi == 8:
-                    if sudoku[8][8] in lista and sudoku[8][8] > 0:
+                if column == 8 and row == 8:
+                    if sudoku[8][8] in list and sudoku[8][8] > 0:
                         return False
                     return True
 
-    def sarake_oikein(sudoku):
-        lista = []
-        sarake = 0
-        while sarake < 9:
-            for rivi in sudoku:
-                if rivi[sarake] > 0 and rivi[sarake] in lista:
+    def column_correct(sudoku):
+        list = []
+        columm = 0
+        while columm < 9:
+            for row in sudoku:
+                if row[columm] > 0 and row[columm] in list:
                     return False
-                lista.append(rivi[sarake])
-            if len(lista) == 9:
-                sarake += 1
-                lista = []
+                list.append(row[columm])
+            if len(list) == 9:
+                columm += 1
+                list = []
                 continue
         return True
 
-    def rivi_oikein(sudoku):
-        lista = []
-        rivi = 0
-        while rivi < 9:
-            for luku in sudoku[rivi]:
-                if luku > 0 and luku in lista:
+    def row_correct(sudoku):
+        list = []
+        row = 0
+        while row < 9:
+            for luku in sudoku[row]:
+                if luku > 0 and luku in list:
                     return False
-                lista.append(luku)
-            if len(lista) == 9:
-                rivi += 1
-                lista = []
+                list.append(luku)
+            if len(list) == 9:
+                row += 1
+                list = []
                 continue
         return True
 
-    if nelio_oikein(sudoku) == True and sarake_oikein(sudoku) == True and rivi_oikein(sudoku) == True:
+    if square_correct(sudoku) == True and column_correct(sudoku) == True and row_correct(sudoku) == True:
         return True
     else:
         return False
@@ -130,7 +130,7 @@ if __name__ == "__main__":
     [3, 0, 0, 0, 0, 0, 0, 0, 2]
     ]
 
-    print(sudoku_oikein(sudoku))
+    print(sudoku_check(sudoku))
 
     sudoku = [
     [2, 6, 7, 8, 3, 9, 5, 0, 4],
@@ -144,4 +144,4 @@ if __name__ == "__main__":
     [7, 4, 5, 0, 0, 3, 9, 0, 1]
     ]
 
-    print(sudoku_oikein(sudoku))
+    print(sudoku_check(sudoku))
