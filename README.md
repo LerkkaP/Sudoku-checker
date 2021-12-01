@@ -1,2 +1,2 @@
 # Sudoku-checker
-This program checks whether the given sudoku grid is valid or not.
+This program checks the validity of a given sudoku grid.
