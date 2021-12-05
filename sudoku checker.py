@@ -112,7 +112,7 @@ def sudoku_check(sudoku: list):
                 continue
         return True
 
-    if square_correct(sudoku) == True and column_correct(sudoku) == True and row_correct(sudoku) == True:
+    if square_correct(sudoku) and column_correct(sudoku) and row_correct(sudoku):
         return True
     else:
         return False
