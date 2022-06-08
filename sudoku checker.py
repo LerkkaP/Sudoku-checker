@@ -1,6 +1,8 @@
-def sudoku_check(sudoku: list):
+class SudokuChecker():
+    def __init__(self, sudoku: list):
+        self.sudoku = sudoku
 
-    def square_correct(sudoku):
+    def square_correct(self, sudoku: list):
         list = []
         column = 0
         row = 0
@@ -84,7 +86,7 @@ def sudoku_check(sudoku: list):
                         return False
                     return True
 
-    def column_correct(sudoku):
+    def column_correct(self, sudoku: list):
         list = []
         columm = 0
         while columm < 9:
@@ -98,7 +100,7 @@ def sudoku_check(sudoku: list):
                 continue
         return True
 
-    def row_correct(sudoku):
+    def row_correct(self, sudoku: list):
         list = []
         row = 0
         while row < 9:
@@ -112,36 +114,41 @@ def sudoku_check(sudoku: list):
                 continue
         return True
 
-    if square_correct(sudoku) and column_correct(sudoku) and row_correct(sudoku):
-        return True
-    else:
-        return False
+    def check(self, sudoku: list):
+        if self.square_correct(sudoku) and self.column_correct(sudoku) and self.row_correct(sudoku):
+            return True
+        else:
+            return False
 
+    def solver(self, sudoku: list):
+        pass
+    
 if __name__ == "__main__":
-    sudoku = [
-    [9, 0, 0, 0, 8, 0, 3, 0, 0],
-    [2, 0, 0, 2, 5, 0, 7, 0, 0],
-    [0, 2, 0, 3, 0, 0, 0, 0, 4],
-    [2, 9, 4, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 7, 3, 0, 5, 6, 0],
-    [7, 0, 5, 0, 6, 0, 4, 0, 0],
-    [0, 0, 7, 8, 0, 3, 9, 0, 0],
-    [0, 0, 1, 0, 0, 0, 0, 0, 3],
-    [3, 0, 0, 0, 0, 0, 0, 0, 2]
-    ]
-
-    print(sudoku_check(sudoku))
 
     sudoku = [
-    [2, 6, 7, 8, 3, 9, 5, 0, 4],
-    [9, 0, 3, 5, 1, 0, 6, 0, 0],
-    [0, 5, 1, 6, 0, 0, 8, 3, 9],
-    [5, 1, 9, 0, 4, 6, 3, 2, 8],
-    [8, 0, 2, 1, 0, 5, 7, 0, 6],
-    [6, 7, 4, 3, 2, 0, 0, 0, 5],
-    [0, 0, 0, 4, 5, 7, 2, 6, 3],
-    [3, 2, 0, 0, 8, 0, 0, 5, 7],
-    [7, 4, 5, 0, 0, 3, 9, 0, 1]
-    ]
+        [2, 6, 7, 8, 3, 9, 5, 0, 4],
+        [9, 0, 3, 5, 1, 0, 6, 0, 0],
+        [0, 5, 1, 6, 0, 0, 8, 3, 9],
+        [5, 1, 9, 0, 4, 6, 3, 2, 8],
+        [8, 0, 2, 1, 0, 5, 7, 0, 6],
+        [6, 7, 4, 3, 2, 0, 0, 0, 5],
+        [0, 0, 0, 4, 5, 7, 2, 6, 3],
+        [3, 2, 0, 0, 8, 0, 0, 5, 7],
+        [7, 4, 5, 0, 0, 3, 9, 0, 1]
+        ]
 
-    print(sudoku_check(sudoku))
+    print(SudokuChecker(sudoku).check(sudoku))
+
+    sudoku = [
+        [9, 0, 0, 0, 8, 0, 3, 0, 0],
+        [2, 0, 0, 2, 5, 0, 7, 0, 0],
+        [0, 2, 0, 3, 0, 0, 0, 0, 4],
+        [2, 9, 4, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 7, 3, 0, 5, 6, 0],
+        [7, 0, 5, 0, 6, 0, 4, 0, 0],
+        [0, 0, 7, 8, 0, 3, 9, 0, 0],
+        [0, 0, 1, 0, 0, 0, 0, 0, 3],
+        [3, 0, 0, 0, 0, 0, 0, 0, 2]
+        ]
+
+    print(SudokuChecker(sudoku).check(sudoku))
