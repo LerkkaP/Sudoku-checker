@@ -37,7 +37,8 @@ class SudokuChecker:
         return self.square_correct() and self.column_correct() and self.row_correct()
 
 if __name__ == "__main__":
-    sudoku1 = [
+    # Create a sample Sudoku grid
+    sudoku = [
         [2, 6, 7, 8, 3, 9, 5, 0, 4],
         [9, 0, 3, 5, 1, 0, 6, 0, 0],
         [0, 5, 1, 6, 0, 0, 8, 3, 9],
@@ -49,18 +50,14 @@ if __name__ == "__main__":
         [7, 4, 5, 0, 0, 3, 9, 0, 1]
     ]
 
-    print(SudokuChecker(sudoku1).check()) 
+    # Instantiate SudokuChecker with the Sudoku grid
+    checker = SudokuChecker(sudoku)
 
-    sudoku2 = [
-        [9, 0, 0, 0, 8, 0, 3, 0, 0],
-        [2, 0, 0, 2, 5, 0, 7, 0, 0],
-        [0, 2, 0, 3, 0, 0, 0, 0, 4],
-        [2, 9, 4, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 7, 3, 0, 5, 6, 0],
-        [7, 0, 5, 0, 6, 0, 4, 0, 0],
-        [0, 0, 7, 8, 0, 3, 9, 0, 0],
-        [0, 0, 1, 0, 0, 0, 0, 0, 3],
-        [3, 0, 0, 0, 0, 0, 0, 0, 2]
-    ]
+    # Check if the Sudoku puzzle is valid
+    is_valid = checker.check()
 
-    print(SudokuChecker(sudoku2).check())
+    # Print the result
+    if is_valid:
+        print("The Sudoku puzzle is valid.")
+    else:
+        print("The Sudoku puzzle is invalid.")
